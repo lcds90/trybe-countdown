@@ -1,16 +1,17 @@
-.App {
+.app {
   background-color: #282c34;
   height: 100vh;
   max-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 25px;
+  grid-template-rows: 60% 40%;
   place-content: center;
 }
 
-.AppHeader {
+.footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: azure;
 }

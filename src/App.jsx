@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import style from './app.module.css';
-import { Countdown } from './components';
+import { Animation, Countdown } from './components';
 
 class App extends Component {
   constructor() {
@@ -11,13 +11,14 @@ class App extends Component {
   }
 
   render() {
-    const { state: { time }, getTimeConverted } = this;
+    const { state: { time } } = this;
     return (
-      <div className={style.App}>
+      <div className={style.app}>
         <main>
-          <Countdown timeSeconds={time} />
+          <Animation />
         </main>
-        <footer className={style.AppHeader}>
+        <footer className={style.footer}>
+          <Countdown timeSeconds={time} />
           Hello!
         </footer>
       </div>

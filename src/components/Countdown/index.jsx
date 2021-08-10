@@ -1,5 +1,5 @@
 import React from 'react';
-import secondsToTime from './time';
+import displayTime from './time';
 import { Input } from '..';
 
 class Countdown extends React.Component {
@@ -13,12 +13,12 @@ class Countdown extends React.Component {
   }
 
   componentDidMount() {
-    const timeLeftVar = secondsToTime(this.state.seconds);
+    const timeLeftVar = displayTime(this.state.seconds);
     this.setState({ time: timeLeftVar });
   }
 
   async getTimeConverted(newTime) {
-    await this.setState({ seconds: newTime, time: secondsToTime(newTime) });
+    await this.setState({ seconds: newTime, time: displayTime(newTime) });
   }
 
   startTimer() {
@@ -31,7 +31,7 @@ class Countdown extends React.Component {
     // Remove one second, set state so a re-render happens.
     const seconds = this.state.seconds - 1;
     this.setState({
-      time: secondsToTime(seconds),
+      time: displayTime(seconds),
       seconds,
     });
 
