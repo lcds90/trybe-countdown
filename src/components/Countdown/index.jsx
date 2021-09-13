@@ -1,61 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Form } from '..';
 import displayTime from './time';
-import { Input } from '..';
 
-class Countdown extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { time: {}, seconds: 0 };
-    this.timer = 0;
-    this.startTimer = this.startTimer.bind(this);
-    this.countDown = this.countDown.bind(this);
-    this.getTimeConverted = this.getTimeConverted.bind(this);
-  }
+const Countdown = () => {
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [start, setStart] = useState(false);
 
-  componentDidMount() {
-    const timeLeftVar = displayTime(this.state.seconds);
-    this.setState({ time: timeLeftVar });
-  }
+  useEffect(() => {
+    if (!timeLeft || !start) return null;
+    const timer = setInterval(() => {
+      setTimeLeft(timeLeft - 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [timeLeft, start]);
 
-  async getTimeConverted(newTime) {
-    await this.setState({ seconds: newTime, time: displayTime(newTime) });
-  }
-
-  startTimer() {
-    if (this.timer == 0 && this.state.seconds > 0) {
-      this.timer = setInterval(this.countDown, 1000);
-    }
-  }
-
-  countDown() {
-    // Remove one second, set state so a re-render happens.
-    const seconds = this.state.seconds - 1;
-    this.setState({
-      time: displayTime(seconds),
-      seconds,
-    });
-
-    // Check if we're at zero.
-    if (seconds == 0) {
-      clearInterval(this.timer);
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <Input onSubmit={this.getTimeConverted} />
-        <button onClick={this.startTimer}>Start</button>
-        m:
-        {' '}
-        {this.state.time.m}
-        {' '}
-        s:
-        {' '}
-        {this.state.time.s}
-      </div>
-    );
-  }
-}
+  return (
+    <article>
+      <Form onChange={setTimeLeft} />
+      <button type="button" onClick={() => setStart(!start)}>Começar</button>
+      {displayTime(timeLeft)}
+    </article>
+  );
+};
 
 export default Countdown;

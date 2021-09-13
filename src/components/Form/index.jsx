@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import handleInput from './validation';
 
-export class Input extends Component {
+export class Form extends Component {
   constructor() {
     super();
     this.state = {
@@ -17,9 +17,9 @@ export class Input extends Component {
     && { [name]: value }) || state[name],
     () => {
       const { minutes, seconds } = this.state;
-      const { onSubmit } = this.props;
+      const { onChange } = this.props;
       const timeSeconds = Number(seconds) + (Number(minutes) * 60);
-      onSubmit(timeSeconds);
+      onChange(timeSeconds);
     });
   }
 
@@ -33,6 +33,7 @@ export class Input extends Component {
             name="minutes"
             id="minutes"
             max="60"
+            placeholder="Minutos"
             min="0"
             onChange={handleChange}
             onKeyPress={handleInput}
@@ -43,6 +44,7 @@ export class Input extends Component {
             type="number"
             name="seconds"
             id="seconds"
+            placeholder="Segundos"
             max="60"
             min="0"
             pattern="\d*"
@@ -55,4 +57,4 @@ export class Input extends Component {
   }
 }
 
-export default Input;
+export default Form;

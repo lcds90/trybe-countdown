@@ -49,11 +49,7 @@ function Credits() {
 class BoxComponent extends PureComponent {
   render() {
     return (
-      <Canvas
-        camera={{
-          isPerspectiveCamera: true, isObject3D: false,
-        }}
-      >
+      <Canvas>
         <OrbitControls />
         <Stars />
         <ambientLight intensity={0.5} />
