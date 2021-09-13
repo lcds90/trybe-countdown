@@ -49,17 +49,19 @@ function Credits() {
 class BoxComponent extends PureComponent {
   render() {
     return (
-      <Canvas>
-        <OrbitControls />
-        <Stars />
-        <ambientLight intensity={0.5} />
-        <spotLight position={[10, 15, 10]} angle={0.3} />
-        <Physics gravity={[0, -2.5, 0]}>
-          <Wall position={[0, 0, -10]} color="#30C06C" />
-          <Box />
-          <Plane />
-        </Physics>
-      </Canvas>
+      <article>
+        <Canvas>
+          <OrbitControls />
+          <Stars />
+          <ambientLight intensity={0.5} />
+          <spotLight position={[10, 15, 10]} angle={0.3} />
+          <Physics gravity={[0, -2.5, 0]}>
+            <Wall position={[0, 0, -10]} color="#30C06C" />
+            <Box />
+            <Plane />
+          </Physics>
+        </Canvas>
+      </article>
     );
   }
 }

@@ -11,16 +11,14 @@ class App extends Component {
   }
 
   render() {
-    const { state: { time } } = this;
     return (
       <main className={style.app}>
         <section>
           <Animation />
         </section>
-        <footer className={style.footer}>
-          <Countdown timeSeconds={time} />
-          Hello!
-        </footer>
+        <section className={style.footer}>
+          <Countdown />
+        </section>
       </main>
     );
   }

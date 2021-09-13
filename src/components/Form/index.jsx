@@ -1,60 +1,53 @@
-import { Component } from 'react';
-import handleInput from './validation';
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 
-export class Form extends Component {
-  constructor() {
-    super();
-    this.state = {
-      minutes: 0,
-      seconds: 0,
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
+const Form = ({ onChange }) => {
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
-  handleChange({ target: { value, name } }) {
-    this.setState((state) => (
-      value.length <= 2
-    && { [name]: value }) || state[name],
-    () => {
-      const { minutes, seconds } = this.state;
-      const { onChange } = this.props;
-      const timeSeconds = Number(seconds) + (Number(minutes) * 60);
-      onChange(timeSeconds);
-    });
-  }
+  const handleInput = (event) => {
+    const { target: { value } } = event;
+    return (String(value).length >= 2 ? event.preventDefault() : null);
+  };
 
-  render() {
-    const { handleChange } = this;
-    return (
-      <section>
-        <label htmlFor="minutes">
-          <input
-            type="number"
-            name="minutes"
-            id="minutes"
-            max="60"
-            placeholder="Minutos"
-            min="0"
-            onChange={handleChange}
-            onKeyPress={handleInput}
-          />
-        </label>
-        <label htmlFor="seconds">
-          <input
-            type="number"
-            name="seconds"
-            id="seconds"
-            placeholder="Segundos"
-            max="60"
-            min="0"
-            pattern="\d*"
-            onChange={handleChange}
-            onKeyPress={handleInput}
-          />
-        </label>
-      </section>
-    );
-  }
-}
+  useEffect(() => {
+    const timeSeconds = Number(seconds) + (Number(minutes) * 60);
+    onChange(timeSeconds);
+  });
+
+  return (
+    <article>
+      <label htmlFor="minutes">
+        <input
+          type="number"
+          name="minutes"
+          id="minutes"
+          max="59"
+          placeholder="Minutos"
+          min="0"
+          onChange={({ target: { value } }) => setMinutes(value)}
+          onKeyPress={handleInput}
+        />
+      </label>
+      <label htmlFor="seconds">
+        <input
+          type="number"
+          name="seconds"
+          id="seconds"
+          placeholder="Segundos"
+          max="60"
+          min="0"
+          pattern="\d*"
+          onChange={({ target: { value } }) => setSeconds(value)}
+          onKeyPress={handleInput}
+        />
+      </label>
+    </article>
+  );
+};
+
+Form.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
 
 export default Form;

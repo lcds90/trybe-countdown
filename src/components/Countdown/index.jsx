@@ -8,9 +8,11 @@ const Countdown = () => {
 
   useEffect(() => {
     if (!timeLeft || !start) return null;
+
     const timer = setInterval(() => {
       setTimeLeft(timeLeft - 1);
     }, 1000);
+
     return () => clearInterval(timer);
   }, [timeLeft, start]);
 
