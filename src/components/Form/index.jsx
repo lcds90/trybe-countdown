@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { label } from './Form.module.css';
 
-const Form = ({ onChange }) => {
+const Form = ({ onChange, started }) => {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
 
@@ -12,12 +13,12 @@ const Form = ({ onChange }) => {
 
   useEffect(() => {
     const timeSeconds = Number(seconds) + (Number(minutes) * 60);
-    onChange(timeSeconds);
+    if (!started) onChange(timeSeconds);
   });
 
   return (
-    <article>
-      <label htmlFor="minutes">
+    <>
+      <label htmlFor="minutes" className={label}>
         <input
           type="number"
           name="minutes"
@@ -29,7 +30,7 @@ const Form = ({ onChange }) => {
           onKeyPress={handleInput}
         />
       </label>
-      <label htmlFor="seconds">
+      <label htmlFor="seconds" className={label}>
         <input
           type="number"
           name="seconds"
@@ -42,7 +43,7 @@ const Form = ({ onChange }) => {
           onKeyPress={handleInput}
         />
       </label>
-    </article>
+    </>
   );
 };
 

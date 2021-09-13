@@ -3,15 +3,27 @@
   height: 100vh;
   max-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 60% 40%;
+  grid: 1fr 0.05fr/ 2fr 1fr;
   place-content: center;
 }
 
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: azure;
+.animation {
+  display: grid;
+}
+
+.countdown {
+  display: grid;
+  place-items: center;
+  border-bottom: 5px double rgba(220, 220, 220, 0.75);
+  box-shadow: -8px 0 8px -4px rgba(30, 30, 60, 0.75);
+}
+
+.app > footer {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  grid-column: span 2;
 }

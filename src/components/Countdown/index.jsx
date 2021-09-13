@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Form } from '..';
 import displayTime from './time';
+import { article } from './Countdown.module.css';
 
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState(0);
@@ -17,10 +18,12 @@ const Countdown = () => {
   }, [timeLeft, start]);
 
   return (
-    <article>
-      <Form onChange={setTimeLeft} />
+    <article className={article}>
+      <span>
+        {displayTime(timeLeft)}
+      </span>
+      <Form onChange={setTimeLeft} started={start} />
       <button type="button" onClick={() => setStart(!start)}>Começar</button>
-      {displayTime(timeLeft)}
     </article>
   );
 };
