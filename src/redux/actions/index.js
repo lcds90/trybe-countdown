@@ -1,13 +1,9 @@
 import {
-  COUNTDOWN_HISTORY_ADD, COUNTDOWN_HISTORY_REMOVE, COUNTDOWN_START, COUNTDOWN_STOP,
+  COUNTDOWN_HISTORY_ADD, COUNTDOWN_HISTORY_REMOVE, COUNTDOWN_TOGGLE,
 } from './types';
 
-export const startCountdown = () => ({
-  type: COUNTDOWN_START,
-});
-
-export const stopCountdown = () => ({
-  type: COUNTDOWN_STOP,
+export const toggleCountdown = () => ({
+  type: COUNTDOWN_TOGGLE,
 });
 
 export const addCountdownToHistory = (payload) => ({

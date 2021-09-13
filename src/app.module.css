@@ -3,19 +3,38 @@
   height: 100vh;
   max-height: 100vh;
   display: grid;
-  grid: 1fr 0.05fr/ 2fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 0.05fr;
   place-content: center;
+  position: relative;
 }
 
 .animation {
   display: grid;
 }
 
-.countdown {
+.countdownInitial {
   display: grid;
   place-items: center;
   border-bottom: 5px double rgba(220, 220, 220, 0.75);
   box-shadow: -8px 0 8px -4px rgba(30, 30, 60, 0.75);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease;
+}
+
+.countdownStarted {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25%;
+  height: 100%;
+  transition: all 1.25s ease;
 }
 
 .app > footer {

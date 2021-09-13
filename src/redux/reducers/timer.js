@@ -1,5 +1,5 @@
 import {
-  COUNTDOWN_HISTORY_ADD, COUNTDOWN_HISTORY_REMOVE, COUNTDOWN_START, COUNTDOWN_STOP,
+  COUNTDOWN_HISTORY_ADD, COUNTDOWN_HISTORY_REMOVE, COUNTDOWN_TOGGLE,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -9,10 +9,8 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case COUNTDOWN_START:
-      return { ...state, isStarted: true };
-    case COUNTDOWN_STOP:
-      return { ...state, isStarted: false };
+    case COUNTDOWN_TOGGLE:
+      return { ...state, isStarted: !state.isStarted };
     case COUNTDOWN_HISTORY_ADD:
       return { ...state, history: [...state.history, payload] };
     case COUNTDOWN_HISTORY_REMOVE:

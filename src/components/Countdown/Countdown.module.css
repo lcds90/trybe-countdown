@@ -8,26 +8,39 @@
   border-radius: 4px;
   outline: 5px double rgba(220, 220, 220, 0.75);
   outline-offset: 25px;
-  background: linear-gradient(270deg, #727272, #d0d0d0);
+  background: linear-gradient(270deg, #d3d3d3, #d0d0d0);
   background-size: 400% 400%;
-  -webkit-animation: bganimation 10s ease infinite;
-  -moz-animation: bganimation 10s ease infinite;
-  animation: bgAnimation 10s ease infinite;
+  -webkit-animation: bganimation 20s ease infinite;
+  -moz-animation: bganimation 20s ease infinite;
+  animation: bgAnimation 20s ease infinite;
 }
 
-.article > span {
+.articleStart {
+  display: grid;
+  width: 80%;
+  height: 80%;
+  grid: 2fr 1fr 1fr / 1fr 1fr;
+  gap: 25px;
+  padding: 25px;
+  border-radius: 4px;
+  background: linear-gradient(270deg, #727272, #d0d0d0);
+  background-size: 400% 400%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+}
+
+.span {
   grid-column: span 2;
-  font-size: 5rem;
+  font-size: 3rem;
   display: grid;
   place-items: center;
 }
 
-.article > button {
+.button {
   border: 0;
   border-radius: 5px;
   background: green;
   color: white;
-  font-size: 1.5rem;
+  font-size: 2rem;
   grid-column: span 2;
 }
 
